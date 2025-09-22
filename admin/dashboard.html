@@ -11,20 +11,18 @@
 
 <!-- Sidebar -->
 <aside class="sidebar">
-  <div class="sidebar-top">
-    <h2 class="logo">Webloom</h2>
-  </div>
-  <ul>
+  <div class="sidebar-logo">Webloom</div>
+  <ul class="sidebar-menu">
     <li class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
     <li data-section="content"><i class="fas fa-edit"></i> Content Editor</li>
     <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
   </ul>
 </aside>
 
-<!-- Main -->
+<!-- Main Content -->
 <div class="main">
   <!-- Header -->
-  <header class="admin-header">
+  <header class="header">
     <div class="header-left">
       <h2>Dashboard</h2>
     </div>
@@ -36,8 +34,7 @@
 
   <!-- Dashboard Section -->
   <section id="dashboard" class="content-section active">
-    <h2>Dashboard Overview</h2>
-    <div class="cards">
+    <div class="cards-grid">
       <div class="card gradient-blue">
         <i class="fas fa-users card-icon"></i>
         <h3>Visitors</h3>
@@ -58,15 +55,6 @@
         <h3>Content Edited</h3>
         <p id="contentEdited">48</p>
       </div>
-    </div>
-
-    <div class="recent-activity">
-      <h3>Recent Activity</h3>
-      <ul id="activityList">
-        <li>New user registered</li>
-        <li>Content updated</li>
-        <li>Password changed</li>
-      </ul>
     </div>
   </section>
 
@@ -92,7 +80,6 @@
       <button class="primary-btn">Update Password</button>
     </div>
   </section>
-
 </div>
 
 <script src="admin.js"></script>

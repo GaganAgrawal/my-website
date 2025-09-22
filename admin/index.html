@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webloom Admin Login</title>
   <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="login-page">
 
@@ -14,11 +16,15 @@
       <p>Sign in to access your dashboard</p>
 
       <form id="loginForm">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter username" required>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" required>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter password" required>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
 
         <button type="submit" class="primary-btn">Login</button>
       </form>
@@ -28,13 +34,14 @@
   <script>
     document.getElementById("loginForm").addEventListener("submit", function(e){
       e.preventDefault();
-      // Simple mock login
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
+
+      // Mock login
       if(username === "admin" && password === "admin123"){
         window.location.href = "dashboard.html";
       } else {
-        alert("Invalid credentials. Use admin/admin123");
+        alert("Invalid credentials! Use admin/admin123");
       }
     });
   </script>

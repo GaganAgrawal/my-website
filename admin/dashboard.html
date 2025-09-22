@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webloom Admin Panel</title>
 <link rel="stylesheet" href="admin.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -17,8 +16,7 @@
   </div>
   <ul>
     <li class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-    <li data-section="analytics"><i class="fas fa-chart-line"></i> Analytics</li>
-    <li data-section="editor"><i class="fas fa-edit"></i> Content Editor</li>
+    <li data-section="content"><i class="fas fa-edit"></i> Content Editor</li>
     <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
   </ul>
 </aside>
@@ -27,15 +25,11 @@
 <div class="main">
   <!-- Header -->
   <header class="admin-header">
-    <div class="search-box">
-      <input type="text" placeholder="Search...">
-      <i class="fas fa-search"></i>
+    <div class="header-left">
+      <h2>Dashboard</h2>
     </div>
     <div class="header-right">
-      <i class="fas fa-bell"></i>
-      <div class="user-profile">
-        <i class="fas fa-user-circle"></i> Admin
-      </div>
+      <div class="user-profile"><i class="fas fa-user-circle"></i> Admin</div>
       <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
     </div>
   </header>
@@ -50,45 +44,41 @@
         <p id="visitors">12,500</p>
       </div>
       <div class="card gradient-green">
-        <i class="fas fa-dollar-sign card-icon"></i>
-        <h3>Revenue</h3>
-        <p id="revenue">$25,400</p>
-      </div>
-      <div class="card gradient-orange">
         <i class="fas fa-user-check card-icon"></i>
         <h3>Users</h3>
         <p id="users">1,250</p>
       </div>
-      <div class="card gradient-purple">
+      <div class="card gradient-orange">
         <i class="fas fa-chart-line card-icon"></i>
         <h3>Performance</h3>
         <p id="performance">92%</p>
       </div>
+      <div class="card gradient-purple">
+        <i class="fas fa-file-alt card-icon"></i>
+        <h3>Content Edited</h3>
+        <p id="contentEdited">48</p>
+      </div>
     </div>
-    <div class="charts">
-      <canvas id="realtimeChart" height="120"></canvas>
+    <div class="recent-activity">
+      <h3>Recent Activity</h3>
+      <ul id="activityList">
+        <li>New user registered</li>
+        <li>Content updated</li>
+        <li>Password changed</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Analytics Section -->
-  <section id="analytics" class="content-section">
-    <h2>Analytics</h2>
-    <div class="charts">
-      <canvas id="trafficChart" height="120"></canvas>
-      <canvas id="salesChart" height="120"></canvas>
-    </div>
-  </section>
-
-  <!-- Content Editor -->
-  <section id="editor" class="content-section">
+  <!-- Content Editor Section -->
+  <section id="content" class="content-section">
     <h2>Content Editor</h2>
     <div class="editor-toolbar">
       <button onclick="formatText('bold')"><i class="fas fa-bold"></i></button>
       <button onclick="formatText('italic')"><i class="fas fa-italic"></i></button>
       <button onclick="formatText('underline')"><i class="fas fa-underline"></i></button>
     </div>
-    <textarea id="editorArea" placeholder="Type here..."></textarea>
-    <button class="primary-btn" onclick="saveContent()">Save</button>
+    <textarea id="editorArea" placeholder="Type your content here..."></textarea>
+    <button class="primary-btn" onclick="saveContent()">Save Content</button>
   </section>
 
   <!-- Settings Section -->
@@ -98,7 +88,7 @@
       <h3>Change Password</h3>
       <input type="password" placeholder="New Password">
       <input type="password" placeholder="Confirm Password">
-      <button class="primary-btn">Update</button>
+      <button class="primary-btn">Update Password</button>
     </div>
   </section>
 

@@ -3,11 +3,22 @@
 // Configuration
 const ADMIN_CONFIG = {
   username: 'admin',
-  password: 'admin123',
-  sessionKey: 'adminLoggedIn'
+  defaultPassword: 'admin123',
+  sessionKey: 'adminLoggedIn',
+  passwordKey: 'adminPassword'
 };
 
 // === AUTHENTICATION FUNCTIONS ===
+
+// Get stored admin password or default
+function getAdminPassword() {
+  return localStorage.getItem(ADMIN_CONFIG.passwordKey) || ADMIN_CONFIG.defaultPassword;
+}
+
+// Set admin password in localStorage
+function setAdminPassword(password) {
+  localStorage.setItem(ADMIN_CONFIG.passwordKey, password);
+}
 
 // Check if user is authenticated
 function isAuthenticated() {
@@ -25,7 +36,7 @@ function setAuthenticated(status) {
 
 // Validate credentials
 function validateCredentials(username, password) {
-  return username === ADMIN_CONFIG.username && password === ADMIN_CONFIG.password;
+  return username === ADMIN_CONFIG.username && password === getAdminPassword();
 }
 
 // Redirect to login page
@@ -69,6 +80,62 @@ function handleLogin(event) {
 }
 
 // === DASHBOARD PAGE FUNCTIONS ===
+
+// Handle password change
+function handlePasswordChange(event) {
+  event.preventDefault();
+  
+  const currentPassword = document.getElementById('current-password').value;
+  const newPassword = document.getElementById('new-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+  const messageElement = document.getElementById('password-change-message');
+  
+  // Clear previous messages
+  messageElement.style.display = 'none';
+  messageElement.className = 'password-change-message';
+  
+  // Validate current password
+  if (currentPassword !== getAdminPassword()) {
+    showPasswordMessage('Current password is incorrect.', 'error');
+    return;
+  }
+  
+  // Validate new password
+  if (newPassword.length < 6) {
+    showPasswordMessage('New password must be at least 6 characters long.', 'error');
+    return;
+  }
+  
+  // Validate password confirmation
+  if (newPassword !== confirmPassword) {
+    showPasswordMessage('New password and confirmation do not match.', 'error');
+    return;
+  }
+  
+  // Update password
+  setAdminPassword(newPassword);
+  
+  // Clear form
+  document.getElementById('password-change-form').reset();
+  
+  // Show success message
+  showPasswordMessage('Password successfully changed!', 'success');
+}
+
+// Show password change message
+function showPasswordMessage(message, type) {
+  const messageElement = document.getElementById('password-change-message');
+  messageElement.textContent = message;
+  messageElement.className = `password-change-message ${type}`;
+  messageElement.style.display = 'block';
+  
+  // Auto-hide success messages after 3 seconds
+  if (type === 'success') {
+    setTimeout(() => {
+      messageElement.style.display = 'none';
+    }, 3000);
+  }
+}
 
 // Handle logout
 function handleLogout() {
@@ -118,6 +185,12 @@ function initDashboardPage() {
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', handleLogout);
+  }
+  
+  // Attach password change form handler
+  const passwordChangeForm = document.getElementById('password-change-form');
+  if (passwordChangeForm) {
+    passwordChangeForm.addEventListener('submit', handlePasswordChange);
   }
   
   // Update welcome message with current time

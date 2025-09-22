@@ -8,17 +8,26 @@ h1, h2, h3, h4 { font-family:'Montserrat',sans-serif; }
 .container { max-width:1200px; margin:0 auto; padding:0 24px; }
 
 /* === HEADER === */
-.header-main { background:#132170; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+.header-main { background:#132170; box-shadow:0 2px 8px rgba(0,0,0,.04); position:relative; }
 .header-flex { display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
 .logo-small { width:48px; height:48px; border-radius:12px; background:#fff; border:2px solid #FF6E40; }
+
+/* Desktop Navigation */
 nav ul { display:flex; gap:24px; }
-nav ul li a { color:#fff; font-family:'Montserrat',sans-serif; font-weight:600; padding:7px 16px; border-radius:5px; transition:background .2s; }
+nav ul li a { color:#fff; font-family:'Montserrat',sans-serif; font-weight:600; padding:10px 16px; border-radius:5px; transition:background .2s; min-height:44px; display:flex; align-items:center; }
 nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
-.nav-auth-box a { margin-left:10px; padding:7px 16px; border-radius:5px; font-weight:bold; font-size:1rem; }
+
+/* Auth buttons */
+.nav-auth-box { display:flex; gap:8px; }
+.nav-auth-box a { padding:10px 16px; border-radius:5px; font-weight:bold; font-size:1rem; min-height:44px; display:flex; align-items:center; justify-content:center; }
 .login-btn { background:#fff; color:#132170; border:1px solid #FF6E40;}
 .login-btn:hover { background:#FF6E40; color:#fff; }
 .signup-btn { background:#FF6E40; color:#fff; border:none;}
 .signup-btn:hover { background:#fff; color:#FF6E40;}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle { display:none; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:10px; min-height:44px; min-width:44px; }
+.mobile-menu-toggle:hover { background:rgba(255,255,255,0.1); border-radius:5px; }
 
 /* --- HERO SECTION --- */
 .hero {
@@ -69,10 +78,14 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   display: inline-block;
-  padding: 10px 22px;
+  padding: 12px 24px;
+  min-height: 44px;
+  min-width: 44px;
   transition: box-shadow .17s, background .17s, color .17s;
   box-shadow: 0 2px 8px rgba(255,110,64,0.06);
   outline: none;
+  text-align: center;
+  line-height: 1.2;
 }
 .btn-primary {
   background: #FF6E40;
@@ -581,19 +594,63 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
 .contact-footer ul li:last-child {
   margin-bottom: 0;
 }
-@media (max-width: 950px) {
-  .footer-flex { flex-direction: column; gap: 18px; align-items: flex-start;}
-  .footer-col { max-width: 98vw; }
-  .company-footer { margin-bottom: 10px;}
+/* === RESPONSIVE DESIGN === */
+
+/* Tablet and below (max-width: 768px) - Mobile Navigation */
+@media (max-width: 768px) {
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle { display:block; }
+  
+  /* Hide desktop navigation by default */
+  .header-flex nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #132170;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  /* Show mobile menu when active */
+  .header-flex nav.active {
+    max-height: 400px;
+  }
+  
+  .header-flex nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 16px 0;
+  }
+  
+  .header-flex nav ul li {
+    width: 100%;
+  }
+  
+  .header-flex nav ul li a {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* Keep auth buttons visible but smaller on mobile */
+  .nav-auth-box {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .nav-auth-box a {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
 }
-@media (max-width: 600px) {
-  .footer-main { padding: 19px 0 9px 0; font-size: 0.92rem;}
-  .footer-logo { width: 42px; height: 42px;}
-  .footer-social img { width: 25px; height: 25px;}
-  .links-footer ul li, .contact-footer ul li { font-size: 0.92rem;}
-}
-/* === RESPONSIVE === */
-@media (max-width:1100px) {
+
+/* Medium devices (max-width: 1100px) */
+@media (max-width: 1100px) {
   .hero-content { flex-direction: column; align-items: flex-start; gap: 38px; }
   .hero-img { justify-content: flex-start; }
   .hero-img-inner { max-width: 98vw; border-radius: 42px; height: 200px; }
@@ -607,27 +664,100 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   .contact-flex { flex-direction: column; gap: 42px; }
   .contact-info, .contact-form { max-width: 98vw; }
   .auth-box { max-width: 98vw; }
+  
+  /* Show auth buttons in header at this size */
+  .nav-auth-box { display: flex; }
 }
-@media (max-width:900px) {
+
+/* Small tablets (max-width: 900px) */
+@media (max-width: 900px) {
   .hero-content { flex-direction: column; gap: 32px; }
   .hero-img-inner { max-width: 98vw; height: 150px; border-radius: 22px; }
   .about-row { flex-direction: column; gap: 36px; }
   .about-img-box-with-text, .about-mission-vision { max-width: 98vw; }
+  
+  /* Compress auth buttons */
+  .nav-auth-box a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 }
-@media (max-width:600px) {
-  .hero-main h1 { font-size: 1.2rem; }
-  .hero-img-inner { border-radius: 12px; }
+
+/* Footer responsive adjustments */
+@media (max-width: 950px) {
+  .footer-flex { flex-direction: column; gap: 18px; align-items: flex-start;}
+  .footer-col { max-width: 98vw; }
+  .company-footer { margin-bottom: 10px;}
+}
+
+/* Mobile devices (max-width: 600px) */
+@media (max-width: 600px) {
+  /* Typography adjustments */
+  .hero-main h1 { font-size: 1.8rem; line-height: 1.2; }
+  .hero-subtext { font-size: 1.1rem; }
+  .hero-img-inner { border-radius: 12px; height: 180px; }
+  
+  /* Card layouts */
   .cards-row, .testimonial-row { gap: 18px; }
+  .service-card, .feature-card {
+    min-width: 280px;
+    padding: 28px 24px 24px 24px;
+  }
+  
+  /* About section */
   .about-img { height: 150px; }
-  .about-box { padding: 18px 10px 14px 10px; }
-  .about-img-text { font-size: 0.97rem; padding: 13px 7px;}
-  .about-img-text h2 { font-size: 1.07rem; }
+  .about-box { padding: 18px 16px 14px 16px; }
+  .about-img-text { font-size: 0.97rem; padding: 16px 12px;}
+  .about-img-text h2 { font-size: 1.2rem; }
+  
+  /* Portfolio */
   .portfolio-title { font-size: 2rem; margin-bottom: 36px; }
-  .portfolio-coming-soon { font-size: 1.25rem; min-height: 100px; padding: 16px 0; }
-  .contact-info, .contact-form, .auth-box { padding: 15px 7px 15px 7px; }
-  .contact-info h2, .auth-box h2 { font-size: 1.4rem; }
-  .contact-details h3 { font-size: 1rem; }
-  .btn { font-size: .97rem; padding: 9px 13px; }
+  .portfolio-coming-soon { font-size: 1.25rem; min-height: 100px; padding: 16px; }
+  
+  /* Contact and forms */
+  .contact-info, .contact-form, .auth-box { padding: 20px 16px; }
+  .contact-info h2, .auth-box h2 { font-size: 1.6rem; }
+  .contact-details h3 { font-size: 1.1rem; }
+  
+  /* Buttons - ensure touch-friendly but smaller text on mobile */
+  .btn { 
+    font-size: 1rem; 
+    padding: 12px 20px; 
+    min-height: 44px;
+  }
+  
+  /* Form improvements */
   .form-row { flex-direction: column; gap: 8px; }
   .auth-form { flex-direction: column; gap: 10px; }
+  .hero-cta-buttons { 
+    flex-direction: column; 
+    gap: 12px; 
+    width: 100%;
+  }
+  .hero-cta-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Footer adjustments */
+  .footer-main { padding: 24px 0 12px 0; font-size: 0.92rem;}
+  .footer-logo { width: 42px; height: 42px;}
+  .footer-social img { width: 25px; height: 25px;}
+  .links-footer ul li, .contact-footer ul li { font-size: 0.92rem;}
+}
+
+/* Very small mobile devices (max-width: 375px) */
+@media (max-width: 375px) {
+  .container { padding: 0 16px; }
+  .hero-main h1 { font-size: 1.6rem; }
+  .service-card, .feature-card {
+    min-width: 100%;
+    margin: 0 auto;
+  }
+  .quick-info-box {
+    min-width: 200px;
+    padding: 10px 16px;
+  }
+  .quick-info-title { font-size: 1rem; }
+  .quick-info-desc { font-size: 0.9rem; }
 }

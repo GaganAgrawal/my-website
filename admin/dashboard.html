@@ -6,100 +6,373 @@
   <title>Admin Dashboard - Webloom</title>
   <meta name="description" content="Webloom admin dashboard for website management">
   <link rel="stylesheet" href="admin.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="admin-dashboard">
   <!-- Admin Header -->
   <header class="admin-header">
     <div class="admin-header-content">
-      <h1>Webloom <span class="accent">Admin</span></h1>
-      <button id="logout-btn" class="logout-btn">Logout</button>
+      <div class="header-left">
+        <button id="sidebar-toggle" class="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>Webloom <span class="accent">Admin</span></h1>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <i class="fas fa-user-circle"></i>
+          <span>Admin</span>
+        </div>
+        <button id="logout-btn" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+          Logout
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- Sidebar Navigation -->
+  <aside id="sidebar" class="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <a href="#dashboard" class="nav-link" data-section="dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#analytics" class="nav-link" data-section="analytics">
+            <i class="fas fa-chart-bar"></i>
+            <span>Analytics</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#editor" class="nav-link" data-section="editor">
+            <i class="fas fa-edit"></i>
+            <span>Content Editor</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#settings" class="nav-link" data-section="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
   
   <!-- Main Dashboard Content -->
   <main class="admin-main">
-    <!-- Welcome Section -->
-    <div class="welcome-card">
-      <h2>Welcome, Admin!</h2>
-      <p id="welcome-text">Welcome to the admin dashboard!</p>
-    </div>
-    
-    <!-- Dashboard Stats/Cards -->
-    <div class="admin-stats">
-      <div class="stat-card">
-        <h3>Website Status</h3>
-        <p>Your website is live and running smoothly. All systems operational.</p>
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="content-section active">
+      <!-- Welcome Section -->
+      <div class="page-header">
+        <h2><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+        <p id="welcome-text">Welcome to your admin dashboard!</p>
       </div>
-      
-      <div class="stat-card">
-        <h3>Quick Actions</h3>
-        <p>Manage content, view analytics, and perform administrative tasks from here.</p>
-      </div>
-      
-      <div class="stat-card">
-        <h3>Recent Activity</h3>
-        <p>No recent administrative activities to display at this time.</p>
-      </div>
-      
-      <div class="stat-card">
-        <h3>System Info</h3>
-        <p>Static site hosted on GitHub Pages. All services running normally.</p>
-      </div>
-    </div>
-    
-    <!-- Password Change Section -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">🔐 Change Password</h2>
-      <div style="max-width: 400px; margin: 0 auto;">
-        <div id="password-change-message" class="password-change-message" style="display: none;"></div>
-        <form id="password-change-form" class="password-change-form">
-          <div class="form-group">
-            <label for="current-password">Current Password</label>
-            <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
+
+      <!-- Quick Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-eye"></i>
           </div>
-          <div class="form-group">
-            <label for="new-password">New Password</label>
-            <input type="password" id="new-password" name="new-password" autocomplete="new-password" required minlength="6">
+          <div class="stat-content">
+            <h3 id="visit-count">1,247</h3>
+            <p>Total Visits</p>
+            <span class="stat-trend positive">
+              <i class="fas fa-arrow-up"></i> +12%
+            </span>
           </div>
-          <div class="form-group">
-            <label for="confirm-password">Confirm New Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required minlength="6">
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
           </div>
-          <button type="submit" class="change-password-btn">Change Password</button>
-        </form>
+          <div class="stat-content">
+            <h3 id="user-count">342</h3>
+            <p>Active Users</p>
+            <span class="stat-trend positive">
+              <i class="fas fa-arrow-up"></i> +8%
+            </span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-content">
+            <h3 id="uptime">99.9%</h3>
+            <p>Uptime</p>
+            <span class="stat-trend positive">
+              <i class="fas fa-check"></i> Excellent
+            </span>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <div class="stat-content">
+            <h3>Online</h3>
+            <p>Server Status</p>
+            <span class="stat-trend positive">
+              <i class="fas fa-circle"></i> Active
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <!-- Coming Soon Analytics Section -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">📊 Analytics & Tools</h2>
-      <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 2px dashed #ddd;">
-        <h3 style="color: #666; font-size: 1.2rem; margin-bottom: 10px;">Coming Soon</h3>
-        <p style="color: #888; margin: 0;">Advanced analytics dashboard and web development tools will be available here soon.</p>
+
+      <!-- Quick Actions -->
+      <div class="dashboard-row">
+        <div class="dashboard-card">
+          <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+          <div class="action-buttons">
+            <button class="action-btn primary" onclick="switchSection('editor')">
+              <i class="fas fa-edit"></i>
+              Edit Content
+            </button>
+            <button class="action-btn secondary" onclick="switchSection('analytics')">
+              <i class="fas fa-chart-line"></i>
+              View Analytics
+            </button>
+            <button class="action-btn tertiary" onclick="refreshStats()">
+              <i class="fas fa-sync-alt"></i>
+              Refresh Data
+            </button>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h3><i class="fas fa-activity"></i> Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <i class="fas fa-user-plus"></i>
+              <div class="activity-content">
+                <p>New user registration</p>
+                <span class="activity-time">2 hours ago</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <i class="fas fa-edit"></i>
+              <div class="activity-content">
+                <p>Content updated</p>
+                <span class="activity-time">5 hours ago</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <i class="fas fa-shield-alt"></i>
+              <div class="activity-content">
+                <p>Security scan completed</p>
+                <span class="activity-time">1 day ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <!-- Additional Admin Content -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">Admin Panel Features</h2>
-      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Secure Authentication:</strong> Password-protected access with localStorage session management
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>GitHub Pages Compatible:</strong> Fully client-side implementation for static hosting
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Responsive Design:</strong> Works seamlessly on desktop and mobile devices
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Consistent Styling:</strong> Matches main website's color scheme and typography
-          </li>
-        </ul>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics-section" class="content-section">
+      <div class="page-header">
+        <h2><i class="fas fa-chart-bar"></i> Analytics Dashboard</h2>
+        <p>Monitor your website performance and user engagement</p>
       </div>
-    </div>
+
+      <div class="analytics-grid">
+        <div class="chart-card">
+          <h3>Visitor Traffic</h3>
+          <canvas id="visitorChart"></canvas>
+        </div>
+        
+        <div class="chart-card">
+          <h3>Page Views</h3>
+          <canvas id="pageViewChart"></canvas>
+        </div>
+        
+        <div class="metrics-card">
+          <h3>Key Metrics</h3>
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-label">Bounce Rate</span>
+              <span class="metric-value">34.2%</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Avg. Session</span>
+              <span class="metric-value">2m 34s</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Pages/Session</span>
+              <span class="metric-value">3.7</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">New Users</span>
+              <span class="metric-value">68%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Editor Section -->
+    <section id="editor-section" class="content-section">
+      <div class="page-header">
+        <h2><i class="fas fa-edit"></i> Content Editor</h2>
+        <p>Edit and manage your website content</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-toolbar">
+          <button class="toolbar-btn" onclick="formatText('bold')">
+            <i class="fas fa-bold"></i>
+          </button>
+          <button class="toolbar-btn" onclick="formatText('italic')">
+            <i class="fas fa-italic"></i>
+          </button>
+          <button class="toolbar-btn" onclick="formatText('underline')">
+            <i class="fas fa-underline"></i>
+          </button>
+          <div class="toolbar-divider"></div>
+          <button class="toolbar-btn" onclick="insertHeading()">
+            <i class="fas fa-heading"></i>
+          </button>
+          <button class="toolbar-btn" onclick="insertLink()">
+            <i class="fas fa-link"></i>
+          </button>
+          <button class="toolbar-btn" onclick="insertList()">
+            <i class="fas fa-list"></i>
+          </button>
+          <div class="toolbar-divider"></div>
+          <button class="toolbar-btn save-btn" onclick="saveContent()">
+            <i class="fas fa-save"></i> Save
+          </button>
+        </div>
+        
+        <div class="editor-content">
+          <textarea id="content-editor" placeholder="Start typing your content here...">
+# Welcome to the Content Editor
+
+This is a **demo** of the content editor functionality. You can:
+
+- Edit text with **markdown** support
+- Save content to localStorage
+- Preview your changes
+- Format text using the toolbar
+
+## Features
+
+1. Real-time editing
+2. Auto-save functionality
+3. Markdown support
+4. Professional interface
+
+Feel free to edit this content and test the save functionality!
+          </textarea>
+        </div>
+        
+        <div class="editor-footer">
+          <div class="editor-status">
+            <span id="save-status">Ready</span>
+          </div>
+          <div class="editor-actions">
+            <button class="btn secondary" onclick="previewContent()">
+              <i class="fas fa-eye"></i> Preview
+            </button>
+            <button class="btn primary" onclick="saveContent()">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings-section" class="content-section">
+      <div class="page-header">
+        <h2><i class="fas fa-cog"></i> Settings</h2>
+        <p>Manage your account and system preferences</p>
+      </div>
+
+      <div class="settings-grid">
+        <!-- Password Change Section -->
+        <div class="settings-card">
+          <h3><i class="fas fa-lock"></i> Change Password</h3>
+          <div id="password-change-message" class="password-change-message" style="display: none;"></div>
+          <form id="password-change-form" class="settings-form">
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
+            </div>
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" id="new-password" name="new-password" autocomplete="new-password" required minlength="6">
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm New Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required minlength="6">
+            </div>
+            <button type="submit" class="btn primary">
+              <i class="fas fa-key"></i> Change Password
+            </button>
+          </form>
+        </div>
+
+        <!-- Session Management -->
+        <div class="settings-card">
+          <h3><i class="fas fa-clock"></i> Session Management</h3>
+          <div class="setting-item">
+            <label for="session-timeout">Auto-logout after inactivity</label>
+            <select id="session-timeout">
+              <option value="30">30 minutes</option>
+              <option value="60" selected>1 hour</option>
+              <option value="120">2 hours</option>
+              <option value="0">Never</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>
+              <input type="checkbox" id="remember-session" checked>
+              Remember login session
+            </label>
+          </div>
+          <button class="btn secondary" onclick="clearAllSessions()">
+            <i class="fas fa-trash"></i> Clear All Sessions
+          </button>
+        </div>
+
+        <!-- System Information -->
+        <div class="settings-card">
+          <h3><i class="fas fa-info-circle"></i> System Information</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Version:</span>
+              <span class="info-value">Admin Panel v2.0</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Last Login:</span>
+              <span class="info-value" id="last-login">Today</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Hosting:</span>
+              <span class="info-value">GitHub Pages</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Status:</span>
+              <span class="info-value status-online">
+                <i class="fas fa-circle"></i> Online
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   
   <!-- Admin JavaScript -->

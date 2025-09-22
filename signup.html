@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Webloom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- You can link your main stylesheet here if needed -->
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f0f2f8;
+    }
+    .auth-bg {
+      background: url('images/teamwork.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      width: 100vw;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .auth-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 33, 112, 0.55);
+      z-index: 1;
+    }
+    .auth-form-container {
+      position: relative;
+      z-index: 2;
+      max-width: 400px;
+      width: 100%;
+      margin: 60px auto;
+      padding: 38px 30px 28px 30px;
+      background: rgba(255,255,255,0.98);
+      border-radius: 12px;
+      box-shadow: 0 6px 32px rgba(20,33,112,0.10);
+      backdrop-filter: blur(2px);
+    }
+    .auth-form-container h2 {
+      margin-top: 0;
+      color: #15216a;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .auth-form-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .auth-form-container input[type="text"],
+    .auth-form-container input[type="email"],
+    .auth-form-container input[type="password"] {
+      width: 100%;
+      padding: 11px 10px;
+      border: 1px solid #ccd2ee;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f7f9fa;
+      margin-bottom: 3px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .auth-form-container input:focus {
+      border-color: #15216a;
+    }
+    .auth-form-container button[type="submit"] {
+      width: 100%;
+      padding: 12px 0;
+      background: #15216a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: background 0.2s;
+    }
+    .auth-form-container button[type="submit"]:hover {
+      background: #FF6E40;
+    }
+    .auth-form-container .form-link {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      color: #15216a;
+      text-decoration: underline;
+      font-size: 0.98rem;
+    }
+    .auth-form-container .form-message {
+      text-align: center;
+      margin-top: 10px;
+      color: #FF6E40;
+      font-size: 1rem;
+      font-weight: 600;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .auth-form-container {
+        max-width: 96vw;
+        padding: 15px 5vw 12px 5vw;
+        margin: 30px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-bg">
+    <div class="auth-overlay"></div>
+    <div class="auth-form-container">
+      <h2>Sign Up</h2>
+      <form id="signup-form" autocomplete="off">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required minlength="6">
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required minlength="6">
+        <button type="submit">Sign Up</button>
+      </form>
+      <span class="form-message" id="form-message"></span>
+      <a class="form-link" href="signin.html">Already have an account? Sign In</a>
+    </div>
+  </div>
+  <script>
+    // Basic client-side validation for demonstration
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var password = this.password.value;
+      var confirm = this.confirm_password.value;
+      var message = document.getElementById('form-message');
+      if (password !== confirm) {
+        message.style.display = 'block';
+        message.textContent = "Passwords do not match!";
+        return false;
+      }
+      // Simulate successful registration
+      message.style.display = 'block';
+      message.style.color = "#0a7d43";
+      message.textContent = "Sign up successful! (Demo only)";
+      // In live, send form data to server here
+      this.reset();
+      setTimeout(()=>{message.style.display='none';}, 2400);
+    });
+  </script>
+</body>
+</html>

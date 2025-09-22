@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Webloom</title>
+  <meta name="description" content="Webloom Admin Dashboard">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    .admin-header {
+      background: #132170;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .admin-header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .admin-nav ul {
+      display: flex;
+      gap: 24px;
+    }
+    .admin-nav ul li a {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 5px;
+      transition: background .2s;
+    }
+    .admin-nav ul li a.active,
+    .admin-nav ul li a:hover {
+      background: #FF6E40;
+      color: #fff;
+    }
+    .logout-btn {
+      background: #FF6E40;
+      color: #fff;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .logout-btn:hover {
+      background: #fff;
+      color: #FF6E40;
+    }
+    .admin-main {
+      background: #fff;
+      padding: 64px 0 42px 0;
+      min-height: calc(100vh - 150px);
+    }
+    .welcome-section {
+      text-align: center;
+      padding: 40px 0;
+    }
+    .welcome-title {
+      font-size: 2.5rem;
+      color: #192170;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    .welcome-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .admin-cards {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .admin-card {
+      background: #f4ede8;
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      padding: 30px;
+      min-width: 280px;
+      max-width: 350px;
+      text-align: center;
+    }
+    .admin-card h3 {
+      color: #192170;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .admin-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    .admin-info {
+      background: #ede8e2;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .admin-info p {
+      margin: 5px 0;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+    <div class="container admin-header-flex">
+      <a href="../index.html" class="logo-link">
+        <img src="../images/logo.png" alt="Webloom Logo" class="logo-small">
+      </a>
+      <nav class="admin-nav">
+        <ul>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="../index.html">View Site</a></li>
+        </ul>
+      </nav>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <section class="admin-main">
+    <div class="container">
+      <div class="welcome-section">
+        <h1 class="welcome-title">Welcome, Admin!</h1>
+        <p class="welcome-subtitle">You have successfully logged into the Webloom Admin Panel</p>
+        
+        <div class="admin-info">
+          <p><strong>Login Time:</strong> <span id="login-time"></span></p>
+          <p><strong>Session Status:</strong> <span style="color: #0a7d43;">Active</span></p>
+          <p><strong>Admin Level:</strong> Full Access</p>
+        </div>
+      </div>
+
+      <div class="admin-cards">
+        <div class="admin-card">
+          <h3>Site Management</h3>
+          <p>Manage website content, pages, and overall site configuration. Monitor site performance and user analytics.</p>
+        </div>
+        
+        <div class="admin-card">
+          <h3>User Management</h3>
+          <p>View and manage user accounts, permissions, and access levels. Monitor user activity and engagement.</p>
+        </div>
+        
+        <div class="admin-card">
+          <h3>Content Analytics</h3>
+          <p>Track website performance, visitor statistics, and content engagement metrics to optimize user experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-main">
+    <div class="container footer-flex">
+      <div class="footer-col">
+        <img src="../images/logo.png" alt="Webloom Logo" class="footer-logo">
+        <p>Webloom &copy; 2025<br>Admin Panel - Empowering your business with creative digital solutions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Admin Links</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="../index.html">Main Site</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Admin Support</h4>
+        <ul>
+          <li>Email: gaganagrawal008@gmail.com</li>
+          <li>Phone: +91 8077472073</li>
+          <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Check authentication and redirect if not logged in
+    function checkAuthentication() {
+      const isAuthenticated = localStorage.getItem('adminAuthenticated');
+      const loginTime = localStorage.getItem('adminLoginTime');
+      const currentTime = Date.now();
+      const sessionDuration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      
+      if (!isAuthenticated || isAuthenticated !== 'true' || 
+          !loginTime || (currentTime - parseInt(loginTime)) >= sessionDuration) {
+        // Clear expired session
+        localStorage.removeItem('adminAuthenticated');
+        localStorage.removeItem('adminLoginTime');
+        // Redirect to login
+        window.location.href = 'index.html';
+        return false;
+      }
+      return true;
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem('adminAuthenticated');
+      localStorage.removeItem('adminLoginTime');
+      window.location.href = 'index.html';
+    }
+
+    // Display login time
+    function displayLoginTime() {
+      const loginTime = localStorage.getItem('adminLoginTime');
+      if (loginTime) {
+        const loginDate = new Date(parseInt(loginTime));
+        document.getElementById('login-time').textContent = loginDate.toLocaleString();
+      }
+    }
+
+    // Initialize page
+    if (checkAuthentication()) {
+      displayLoginTime();
+    }
+
+    // Auto-logout on session expiry (check every minute)
+    setInterval(() => {
+      if (!checkAuthentication()) {
+        alert('Session expired. Please log in again.');
+      }
+    }, 60000);
+  </script>
+</body>
+</html>

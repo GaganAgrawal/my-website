@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Webloom</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body, html { height: 100%; margin: 0; padding: 0; }
+    .auth-bg {
+      background: url('../images/teamwork.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      width: 100vw;
+      position: relative;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .auth-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 33, 112, 0.55);
+      z-index: 1;
+    }
+    .auth-form-container {
+      position: relative;
+      z-index: 2;
+      max-width: 380px;
+      margin: 0 auto;
+      top: 90px;
+      padding: 38px 30px 28px 30px;
+      background: rgba(255,255,255,0.97);
+      border-radius: 12px;
+      box-shadow: 0 6px 32px rgba(20,33,112,0.10);
+      backdrop-filter: blur(2px);
+    }
+    .auth-form-container h2 {
+      margin-top: 0;
+      color: #15216a;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .auth-form-container input[type="text"],
+    .auth-form-container input[type="password"] {
+      width: 100%;
+      padding: 11px 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccd2ee;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f7f9fa;
+    }
+    .auth-form-container button[type="submit"] {
+      width: 100%;
+      padding: 12px 0;
+      background: #15216a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .auth-form-container button[type="submit"]:hover {
+      background: #FF6E40;
+    }
+    .auth-form-container .form-link {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      color: #15216a;
+      text-decoration: underline;
+      font-size: 0.98rem;
+    }
+    .error-message {
+      background: #ffebee;
+      color: #c62828;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .auth-form-container {
+        max-width: 96vw;
+        padding: 15px 5vw 12px 5vw;
+        top: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-bg">
+    <div class="auth-overlay"></div>
+    <div class="auth-form-container">
+      <h2>Admin Login</h2>
+      <div id="error-message" class="error-message"></div>
+      <form id="admin-login-form">
+        <input type="text" id="admin-id" placeholder="Admin ID" required>
+        <input type="password" id="admin-password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+      </form>
+      <a class="form-link" href="../index.html">← Back to Main Site</a>
+    </div>
+  </div>
+
+  <script>
+    // Check if already logged in
+    if (localStorage.getItem('adminLoggedIn') === 'true') {
+      window.location.href = 'dashboard.html';
+    }
+
+    // Handle form submission
+    document.getElementById('admin-login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const adminId = document.getElementById('admin-id').value;
+      const password = document.getElementById('admin-password').value;
+      const errorDiv = document.getElementById('error-message');
+      
+      // Hardcoded credentials for demo (in production, this would be server-side)
+      const validCredentials = {
+        'admin': 'admin123',
+        'webloom': 'webloom2025'
+      };
+      
+      if (validCredentials[adminId] && validCredentials[adminId] === password) {
+        // Set session
+        localStorage.setItem('adminLoggedIn', 'true');
+        localStorage.setItem('adminId', adminId);
+        localStorage.setItem('adminLoginTime', new Date().getTime());
+        
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+      } else {
+        // Show error
+        errorDiv.textContent = 'Invalid Admin ID or Password';
+        errorDiv.style.display = 'block';
+        
+        // Clear fields
+        document.getElementById('admin-id').value = '';
+        document.getElementById('admin-password').value = '';
+      }
+    });
+  </script>
+</body>
+</html>

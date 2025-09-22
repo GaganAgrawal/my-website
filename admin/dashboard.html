@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Webloom</title>
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    .admin-header {
+      background: #132170;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .admin-header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .admin-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #fff;
+      border: 2px solid #FF6E40;
+    }
+    .admin-logo span {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .admin-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .admin-user {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+    }
+    .logout-btn {
+      background: #FF6E40;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+    }
+    .logout-btn:hover {
+      background: #e55a36;
+    }
+    .dashboard-content {
+      padding: 60px 0;
+      background: #f5f5f5;
+      min-height: calc(100vh - 84px);
+    }
+    .dashboard-welcome {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    .dashboard-welcome h1 {
+      color: #15216a;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    .dashboard-welcome p {
+      color: #666;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .stat-card h3 {
+      color: #15216a;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    .stat-number {
+      color: #FF6E40;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .quick-actions {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+    .quick-actions h2 {
+      color: #15216a;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .action-btn {
+      background: #132170;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .action-btn:hover {
+      background: #FF6E40;
+    }
+    @media (max-width: 768px) {
+      .dashboard-welcome h1 {
+        font-size: 2rem;
+      }
+      .admin-header-flex {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .admin-nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+    <div class="container admin-header-flex">
+      <div class="admin-logo">
+        <img src="../images/logo.png" alt="Webloom Logo">
+        <span>Admin Panel</span>
+      </div>
+      <div class="admin-nav">
+        <span class="admin-user">Welcome, <span id="admin-name">Admin</span></span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- DASHBOARD CONTENT -->
+  <section class="dashboard-content">
+    <div class="container">
+      <div class="dashboard-welcome">
+        <h1>Welcome, Admin</h1>
+        <p>You have successfully logged into the Webloom admin panel. This is a simple dashboard where you can manage your website and view important information.</p>
+        <p><strong>Login Time:</strong> <span id="login-time"></span></p>
+      </div>
+
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <h3>Total Pages</h3>
+          <div class="stat-number">12</div>
+          <div class="stat-label">Website Pages</div>
+        </div>
+        <div class="stat-card">
+          <h3>Active Since</h3>
+          <div class="stat-number">2025</div>
+          <div class="stat-label">Year Established</div>
+        </div>
+        <div class="stat-card">
+          <h3>Admin Status</h3>
+          <div class="stat-number">✓</div>
+          <div class="stat-label">System Online</div>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+          <button class="action-btn" onclick="alert('Feature coming soon!')">Manage Content</button>
+          <button class="action-btn" onclick="alert('Feature coming soon!')">View Analytics</button>
+          <button class="action-btn" onclick="alert('Feature coming soon!')">User Management</button>
+          <button class="action-btn" onclick="window.open('../index.html', '_blank')">View Website</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Check authentication
+    function checkAuth() {
+      const isLoggedIn = localStorage.getItem('adminLoggedIn');
+      const adminId = localStorage.getItem('adminId');
+      const loginTime = localStorage.getItem('adminLoginTime');
+      
+      if (isLoggedIn !== 'true') {
+        window.location.href = 'index.html';
+        return;
+      }
+      
+      // Update UI with admin info
+      if (adminId) {
+        document.getElementById('admin-name').textContent = adminId.charAt(0).toUpperCase() + adminId.slice(1);
+      }
+      
+      if (loginTime) {
+        const date = new Date(parseInt(loginTime));
+        document.getElementById('login-time').textContent = date.toLocaleString();
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('adminLoggedIn');
+        localStorage.removeItem('adminId');
+        localStorage.removeItem('adminLoginTime');
+        window.location.href = 'index.html';
+      }
+    }
+    
+    // Check auth on page load
+    checkAuth();
+    
+    // Auto-logout after 2 hours of inactivity (optional security feature)
+    let lastActivity = Date.now();
+    const TIMEOUT = 2 * 60 * 60 * 1000; // 2 hours
+    
+    function checkTimeout() {
+      if (Date.now() - lastActivity > TIMEOUT) {
+        alert('Session expired. Please login again.');
+        logout();
+      }
+    }
+    
+    // Update last activity on user interaction
+    document.addEventListener('click', () => {
+      lastActivity = Date.now();
+    });
+    
+    document.addEventListener('keypress', () => {
+      lastActivity = Date.now();
+    });
+    
+    // Check timeout every minute
+    setInterval(checkTimeout, 60000);
+  </script>
+</body>
+</html>

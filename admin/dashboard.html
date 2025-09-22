@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Webloom</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <h1>Webloom Admin Dashboard</h1>
+      <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-content">
+      <div class="welcome-card">
+        <h2>Welcome, Admin!</h2>
+        <p>You have successfully logged into the Webloom administration panel. This is a protected area of the website where you can manage your content and settings.</p>
+      </div>
+
+      <div class="admin-stats">
+        <div class="stat-card">
+          <h3>Website Status</h3>
+          <div class="stat-number">Online</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>Security Level</h3>
+          <div class="stat-number">High</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>Admin Access</h3>
+          <div class="stat-number">Active</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>System Health</h3>
+          <div class="stat-number">Good</div>
+        </div>
+      </div>
+
+      <div class="welcome-card" style="margin-top: 32px;">
+        <h2>Quick Actions</h2>
+        <p style="margin-bottom: 20px;">Here are some common administrative tasks:</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="../index.html" style="background: #15216a; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.2s;" 
+             onmouseover="this.style.background='#FF6E40'" 
+             onmouseout="this.style.background='#15216a'">
+            View Website
+          </a>
+          <a href="../contact.html" style="background: #15216a; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.2s;"
+             onmouseover="this.style.background='#FF6E40'" 
+             onmouseout="this.style.background='#15216a'">
+            View Messages
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+  <script>
+    // Display session info when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add session info to the welcome card
+      setTimeout(() => {
+        if (window.adminAuth) {
+          const sessionInfo = window.adminAuth.getSessionInfo();
+          if (sessionInfo) {
+            const welcomeCard = document.querySelector('.welcome-card p');
+            if (welcomeCard) {
+              welcomeCard.innerHTML += `<br><br><small style="color: #666;">
+                Login Time: ${sessionInfo.loginTime}<br>
+                Last Access: ${sessionInfo.lastAccess}
+              </small>`;
+            }
+          }
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>

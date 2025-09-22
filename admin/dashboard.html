@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Webloom</title>
+  <meta name="description" content="Webloom admin dashboard for website management">
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="admin-dashboard">
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <h1>Webloom <span class="accent">Admin</span></h1>
+      <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+  </header>
+  
+  <!-- Main Dashboard Content -->
+  <main class="admin-main">
+    <!-- Welcome Section -->
+    <div class="welcome-card">
+      <h2>Welcome, Admin!</h2>
+      <p id="welcome-text">Welcome to the admin dashboard!</p>
+    </div>
+    
+    <!-- Dashboard Stats/Cards -->
+    <div class="admin-stats">
+      <div class="stat-card">
+        <h3>Website Status</h3>
+        <p>Your website is live and running smoothly. All systems operational.</p>
+      </div>
+      
+      <div class="stat-card">
+        <h3>Quick Actions</h3>
+        <p>Manage content, view analytics, and perform administrative tasks from here.</p>
+      </div>
+      
+      <div class="stat-card">
+        <h3>Recent Activity</h3>
+        <p>No recent administrative activities to display at this time.</p>
+      </div>
+      
+      <div class="stat-card">
+        <h3>System Info</h3>
+        <p>Static site hosted on GitHub Pages. All services running normally.</p>
+      </div>
+    </div>
+    
+    <!-- Additional Admin Content -->
+    <div class="welcome-card" style="margin-top: 30px;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">Admin Panel Features</h2>
+      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+            ✅ <strong>Secure Authentication:</strong> Password-protected access with localStorage session management
+          </li>
+          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+            ✅ <strong>GitHub Pages Compatible:</strong> Fully client-side implementation for static hosting
+          </li>
+          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+            ✅ <strong>Responsive Design:</strong> Works seamlessly on desktop and mobile devices
+          </li>
+          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
+            ✅ <strong>Consistent Styling:</strong> Matches main website's color scheme and typography
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Admin JavaScript -->
+  <script src="admin.js"></script>
+</body>
+</html>

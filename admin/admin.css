@@ -50,5 +50,41 @@ textarea{width:100%;padding:15px;border-radius:10px;border:1px solid #ddd;resize
 .settings-card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.05);max-width:400px;margin-top:10px;}
 .settings-card input{width:100%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #ddd;}
 
+/* ===== Login Page ===== */
+.login-page {
+  background: url('images/teamwork.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  background: rgba(255,255,255,0.95);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 350px;
+}
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+.login-card p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #475569;
+}
+.login-card .form-group {
+  margin-bottom: 15px;
+}
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+}
+
 /* ===== Responsive ===== */
 @media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;}.cards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}}

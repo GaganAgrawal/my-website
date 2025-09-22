@@ -3,53 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login - Webloom</title>
-  <meta name="description" content="Admin login page for Webloom website management">
+  <title>Webloom Admin Login</title>
   <link rel="stylesheet" href="admin.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div class="admin-login-bg">
-    <div class="admin-login-container">
-      <h1>Admin <span style="color: #FF6E40;">Login</span></h1>
-      <p class="subtitle">Access the Webloom admin panel</p>
-      
-      <!-- Error message container -->
-      <div id="error-message" class="error-message" role="alert"></div>
-      
-      <!-- Login form -->
-      <form id="admin-login-form" class="admin-form">
+<body class="login-page">
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Welcome to Webloom Admin</h2>
+      <p>Sign in to access your dashboard</p>
+
+      <form id="loginForm">
         <label for="username">Username</label>
-        <input 
-          type="text" 
-          id="username" 
-          name="username" 
-          required 
-          autocomplete="username"
-          placeholder="Enter your username"
-        >
-        
+        <input type="text" id="username" placeholder="Enter username" required>
+
         <label for="password">Password</label>
-        <input 
-          type="password" 
-          id="password" 
-          name="password" 
-          required 
-          autocomplete="current-password"
-          placeholder="Enter your password"
-        >
-        
-        <button type="submit">Sign In</button>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit" class="primary-btn">Login</button>
       </form>
-      
-      <!-- Help text -->
-      <div style="margin-top: 20px; text-align: center; color: #666; font-size: 0.85rem;">
-        <p>For demo purposes: admin / admin123</p>
-      </div>
     </div>
   </div>
-  
-  <!-- Admin JavaScript -->
-  <script src="admin.js"></script>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      // Simple mock login
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if(username === "admin" && password === "admin123"){
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid credentials. Use admin/admin123");
+      }
+    });
+  </script>
+
 </body>
 </html>

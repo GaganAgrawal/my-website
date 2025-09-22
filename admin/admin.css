@@ -223,6 +223,78 @@ body {
   font-size: 0.95rem;
 }
 
+/* === PASSWORD CHANGE FORM === */
+.password-change-form {
+  text-align: left;
+}
+
+.password-change-form .form-group {
+  margin-bottom: 15px;
+}
+
+.password-change-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #15216a;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.password-change-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccd2ee;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9f9fc;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.password-change-form input[type="password"]:focus {
+  outline: none;
+  border-color: #FF6E40;
+  background: #fff;
+}
+
+.change-password-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #15216a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 10px;
+}
+
+.change-password-btn:hover {
+  background: #FF6E40;
+}
+
+.password-change-message {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.password-change-message.success {
+  color: #2e7d32;
+  background: #e8f5e8;
+  border: 1px solid #c8e6c9;
+}
+
+.password-change-message.error {
+  color: #d32f2f;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   .admin-login-container {

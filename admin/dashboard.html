@@ -7,102 +7,297 @@
   <meta name="description" content="Webloom admin dashboard for website management">
   <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="admin-dashboard">
+  <!-- Admin Sidebar -->
+  <nav class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-header">
+      <h2>Webloom <span class="accent">Admin</span></h2>
+      <button class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <ul class="sidebar-menu">
+      <li class="menu-item active" data-section="dashboard">
+        <a href="#dashboard">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item" data-section="analytics">
+        <a href="#analytics">
+          <i class="fas fa-chart-bar"></i>
+          <span>Analytics</span>
+        </a>
+      </li>
+      <li class="menu-item" data-section="editor">
+        <a href="#editor">
+          <i class="fas fa-edit"></i>
+          <span>Content Editor</span>
+        </a>
+      </li>
+      <li class="menu-item" data-section="settings">
+        <a href="#settings">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+    </ul>
+    
+    <div class="sidebar-footer">
+      <button id="logout-btn" class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
   <!-- Admin Header -->
   <header class="admin-header">
     <div class="admin-header-content">
-      <h1>Webloom <span class="accent">Admin</span></h1>
-      <button id="logout-btn" class="logout-btn">Logout</button>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 id="section-title">Dashboard</h1>
+      <div class="header-actions">
+        <span class="welcome-text">Welcome, Admin</span>
+        <button id="header-logout-btn" class="header-logout-btn">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
     </div>
   </header>
   
   <!-- Main Dashboard Content -->
   <main class="admin-main">
-    <!-- Welcome Section -->
-    <div class="welcome-card">
-      <h2>Welcome, Admin!</h2>
-      <p id="welcome-text">Welcome to the admin dashboard!</p>
-    </div>
-    
-    <!-- Dashboard Stats/Cards -->
-    <div class="admin-stats">
-      <div class="stat-card">
-        <h3>Website Status</h3>
-        <p>Your website is live and running smoothly. All systems operational.</p>
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="admin-section active">
+      <div class="section-header">
+        <h2><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+        <p id="welcome-text">Welcome to the admin dashboard!</p>
       </div>
       
-      <div class="stat-card">
-        <h3>Quick Actions</h3>
-        <p>Manage content, view analytics, and perform administrative tasks from here.</p>
+      <!-- Dashboard Stats/Cards -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="stat-content">
+            <h3>Website Status</h3>
+            <p class="stat-value">Online</p>
+            <p class="stat-desc">All systems operational</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="stat-content">
+            <h3>Total Visits</h3>
+            <p class="stat-value" id="visit-counter">1,247</p>
+            <p class="stat-desc">This month</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-content">
+            <h3>Active Users</h3>
+            <p class="stat-value">23</p>
+            <p class="stat-desc">Last 24 hours</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <div class="stat-content">
+            <h3>Uptime</h3>
+            <p class="stat-value">99.9%</p>
+            <p class="stat-desc">GitHub Pages hosting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+        <div class="action-grid">
+          <button class="action-btn" onclick="switchSection('analytics')">
+            <i class="fas fa-chart-bar"></i>
+            <span>View Analytics</span>
+          </button>
+          <button class="action-btn" onclick="switchSection('editor')">
+            <i class="fas fa-edit"></i>
+            <span>Edit Content</span>
+          </button>
+          <button class="action-btn" onclick="switchSection('settings')">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </button>
+          <button class="action-btn" onclick="refreshStats()">
+            <i class="fas fa-sync-alt"></i>
+            <span>Refresh Stats</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics-section" class="admin-section">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-bar"></i> Analytics Dashboard</h2>
+        <p>Monitor your website performance and visitor insights</p>
       </div>
       
-      <div class="stat-card">
-        <h3>Recent Activity</h3>
-        <p>No recent administrative activities to display at this time.</p>
+      <div class="analytics-grid">
+        <div class="chart-container">
+          <h3>Visitor Trends</h3>
+          <canvas id="visitorChart" width="400" height="200"></canvas>
+        </div>
+        
+        <div class="analytics-stats">
+          <div class="analytics-card">
+            <h4>Page Views</h4>
+            <p class="big-number" id="page-views">3,842</p>
+            <span class="trend up">+12% from last week</span>
+          </div>
+          <div class="analytics-card">
+            <h4>Bounce Rate</h4>
+            <p class="big-number">34.2%</p>
+            <span class="trend down">-5% from last week</span>
+          </div>
+          <div class="analytics-card">
+            <h4>Avg. Session</h4>
+            <p class="big-number">2m 45s</p>
+            <span class="trend up">+8% from last week</span>
+          </div>
+        </div>
       </div>
       
-      <div class="stat-card">
-        <h3>System Info</h3>
-        <p>Static site hosted on GitHub Pages. All services running normally.</p>
-      </div>
-    </div>
-    
-    <!-- Password Change Section -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">🔐 Change Password</h2>
-      <div style="max-width: 400px; margin: 0 auto;">
-        <div id="password-change-message" class="password-change-message" style="display: none;"></div>
-        <form id="password-change-form" class="password-change-form">
-          <div class="form-group">
-            <label for="current-password">Current Password</label>
-            <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
+      <div class="real-time-stats">
+        <h3>Real-time Statistics</h3>
+        <div class="real-time-grid">
+          <div class="real-time-card">
+            <i class="fas fa-users"></i>
+            <span>Active Users</span>
+            <strong id="active-users">12</strong>
           </div>
-          <div class="form-group">
-            <label for="new-password">New Password</label>
-            <input type="password" id="new-password" name="new-password" autocomplete="new-password" required minlength="6">
+          <div class="real-time-card">
+            <i class="fas fa-clock"></i>
+            <span>Last Updated</span>
+            <strong id="last-updated">Just now</strong>
           </div>
-          <div class="form-group">
-            <label for="confirm-password">Confirm New Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required minlength="6">
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Editor Section -->
+    <section id="editor-section" class="admin-section">
+      <div class="section-header">
+        <h2><i class="fas fa-edit"></i> Content Editor</h2>
+        <p>Edit and manage your website content</p>
+      </div>
+      
+      <div class="editor-container">
+        <div class="editor-toolbar">
+          <select id="file-selector">
+            <option value="welcome-message">Welcome Message</option>
+            <option value="about-content">About Content</option>
+            <option value="site-notice">Site Notice</option>
+          </select>
+          <button id="save-content" class="save-btn">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </div>
+        
+        <div class="editor-workspace">
+          <div class="editor-panel">
+            <h4>Editor</h4>
+            <textarea id="content-editor" placeholder="Start editing your content...">Welcome to our website! This is a demo content editor where you can modify text content. Changes are saved to localStorage for demonstration purposes.</textarea>
           </div>
-          <button type="submit" class="change-password-btn">Change Password</button>
-        </form>
+          <div class="preview-panel">
+            <h4>Preview</h4>
+            <div id="content-preview" class="preview-content">
+              Welcome to our website! This is a demo content editor where you can modify text content. Changes are saved to localStorage for demonstration purposes.
+            </div>
+          </div>
+        </div>
+        
+        <div id="editor-message" class="editor-message" style="display: none;"></div>
       </div>
-    </div>
-    
-    <!-- Coming Soon Analytics Section -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">📊 Analytics & Tools</h2>
-      <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 2px dashed #ddd;">
-        <h3 style="color: #666; font-size: 1.2rem; margin-bottom: 10px;">Coming Soon</h3>
-        <p style="color: #888; margin: 0;">Advanced analytics dashboard and web development tools will be available here soon.</p>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings-section" class="admin-section">
+      <div class="section-header">
+        <h2><i class="fas fa-cog"></i> Settings</h2>
+        <p>Configure your admin panel and account settings</p>
       </div>
-    </div>
-    
-    <!-- Additional Admin Content -->
-    <div class="welcome-card" style="margin-top: 30px;">
-      <h2 style="font-size: 1.5rem; margin-bottom: 15px;">Admin Panel Features</h2>
-      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Secure Authentication:</strong> Password-protected access with localStorage session management
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>GitHub Pages Compatible:</strong> Fully client-side implementation for static hosting
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Responsive Design:</strong> Works seamlessly on desktop and mobile devices
-          </li>
-          <li style="margin-bottom: 10px; padding: 8px; background: #f8f9fa; border-radius: 6px;">
-            ✅ <strong>Consistent Styling:</strong> Matches main website's color scheme and typography
-          </li>
-        </ul>
+      
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3><i class="fas fa-lock"></i> Change Password</h3>
+          <div id="password-change-message" class="password-change-message" style="display: none;"></div>
+          <form id="password-change-form" class="password-change-form">
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input type="password" id="current-password" name="current-password" autocomplete="current-password" required>
+            </div>
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" id="new-password" name="new-password" autocomplete="new-password" required minlength="6">
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm New Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required minlength="6">
+            </div>
+            <button type="submit" class="change-password-btn">
+              <i class="fas fa-key"></i> Change Password
+            </button>
+          </form>
+        </div>
+        
+        <div class="settings-card">
+          <h3><i class="fas fa-palette"></i> Theme Settings</h3>
+          <div class="theme-options">
+            <label class="theme-option">
+              <input type="radio" name="theme" value="default" checked>
+              <span>Default Theme</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="dark">
+              <span>Dark Theme</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="blue">
+              <span>Blue Theme</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="settings-card">
+          <h3><i class="fas fa-info-circle"></i> System Information</h3>
+          <div class="system-info">
+            <p><strong>Version:</strong> 2.0.0</p>
+            <p><strong>Hosting:</strong> GitHub Pages</p>
+            <p><strong>Last Login:</strong> <span id="last-login-time">Today</span></p>
+            <p><strong>Session:</strong> Active</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
   
   <!-- Admin JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>

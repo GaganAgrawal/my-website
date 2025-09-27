@@ -4,9 +4,7 @@
    Last Updated: 2025-09-25
 =============================================================== */
 
-/* ================================
-   1. VARIABLES & RESET
-================================== */
+/* 1. VARIABLES & RESET */
 :root {
   --color-primary: #FF6E40;
   --color-secondary: #192170;
@@ -17,24 +15,19 @@
   --color-grey: #e3e9fd;
   --color-muted: #797ca6;
   --color-border: #ccd2ee;
-
   --shadow-xs: 0 1px 2px rgba(25,33,112,0.13);
   --shadow-sm: 0 4px 18px rgba(25,33,112,0.07);
   --shadow-md: 0 8px 28px rgba(25,33,112,0.10);
   --shadow-lg: 0 18px 56px rgba(25,33,112,0.16);
-
   --radius-xs: 7px;
   --radius-md: 20px;
   --radius-lg: 36px;
   --radius-hero: 70px;
-
   --font-main: 'Roboto',sans-serif;
   --font-head: 'Montserrat',sans-serif;
-
   --timing: .35s cubic-bezier(.62,.03,.32,1);
   --timing-fast: .18s cubic-bezier(.62,.03,.32,1);
 }
-
 *, *:before, *:after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -51,9 +44,7 @@ ul, ol { list-style: none; margin: 0; padding: 0;}
 img { max-width: 100%; display: block; border: 0;}
 hr { border: none; border-top: 1.5px solid var(--color-border); margin: 36px 0; }
 
-/* ================================
-   2. UTILITY CLASSES
-================================== */
+/* 2. UTILITY CLASSES */
 .flex { display: flex; }
 .flex-center { justify-content: center; align-items: center; }
 .flex-col { flex-direction: column; }
@@ -77,9 +68,7 @@ hr { border: none; border-top: 1.5px solid var(--color-border); margin: 36px 0; 
 .bg-accent { background: var(--color-accent);}
 .transition { transition: var(--timing); }
 
-/* ================================
-   3. LAYOUT & GRID
-================================== */
+/* 3. LAYOUT & GRID */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 .section { padding: 74px 0; }
 .cards-row, .testimonial-row {
@@ -95,9 +84,7 @@ hr { border: none; border-top: 1.5px solid var(--color-border); margin: 36px 0; 
   .grid-2x2 { grid-template-columns: 1fr; gap: 24px;}
 }
 
-/* ================================
-   4. TYPOGRAPHY & BUTTONS
-================================== */
+/* 4. TYPOGRAPHY & BUTTONS */
 h1, h2, h3, h4 { font-family: var(--font-head); }
 .section-title {
   font-size: 2.5rem;
@@ -141,9 +128,7 @@ h4 { font-size: 1.17rem;}
 }
 .btn-secondary:hover { background: var(--color-secondary); color: var(--color-white); transform: scale(1.05);}
 
-/* ================================
-   5. HEADER & NAVIGATION
-================================== */
+/* 5. HEADER & NAVIGATION */
 .header-main {
   background: linear-gradient(90deg, var(--color-secondary) 78%, var(--color-primary) 120%);
   box-shadow: var(--shadow-xs);
@@ -197,17 +182,8 @@ nav ul li a:hover {
   border: none;
 }
 .signup-btn:hover { background: var(--color-white); color: var(--color-primary);}
-nav ul li a { color:#fff; font-family:'Montserrat',sans-serif; font-weight:600; padding:12px 16px; border-radius:5px; transition:background .2s; min-height: 44px; display: flex; align-items: center; }
-nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
-.nav-auth-box a { margin-left:10px; padding:12px 16px; border-radius:5px; font-weight:bold; font-size:1rem; min-height: 44px; display: flex; align-items: center; }
-.login-btn { background:#fff; color:#132170; border:1px solid #FF6E40;}
-.login-btn:hover { background:#FF6E40; color:#fff; }
-.signup-btn { background:#FF6E40; color:#fff; border:none;}
-.signup-btn:hover { background:#fff; color:#FF6E40;}
 
-/* ================================
-   6. HERO (WITH WHITE GRID)
-================================== */
+/* 6. HERO (WITH WHITE GRID) */
 .hero {
   background: linear-gradient(120deg, #f9f7f4 80%, #ffd7c9 130%);
   padding: 72px 0 60px 0;
@@ -295,9 +271,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   transform: scale(1.04) rotate(-1deg);
 }
 
-/* ================================
-   7. ABOUT SECTION (CUSTOM 2-COLUMN LAYOUT)
-================================== */
+/* 7. ABOUT SECTION (CUSTOM 2-COLUMN LAYOUT) */
 .about-cards-section {
   background: #fff;
   padding: 48px 0 64px 0;
@@ -365,8 +339,6 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
 .about-card.about-company-card {
   margin-top: 0;
 }
-
-/* Responsive for About Section */
 @media (max-width: 950px) {
   .about-cards-grid-custom {
     grid-template-columns: 1fr;
@@ -376,9 +348,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   .about-image-card .img-box { aspect-ratio: 16/10; min-height: 120px; }
 }
 
-/* ================================
-   8. INFO STRIP (ANIMATED)
-================================== */
+/* 8. INFO STRIP (ANIMATED) */
 .animated-info-strip {
   background: var(--color-secondary);
   overflow: hidden;
@@ -427,9 +397,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
 }
 .info-desc { font-size: 1.02rem; color: var(--color-grey); }
 
-/* ================================
-   9. SERVICES/FEATURES/TESTIMONIALS
-================================== */
+/* 9. SERVICES/FEATURES/TESTIMONIALS */
 .service-card, .feature-card, .testimonial-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
@@ -473,9 +441,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   font-family: var(--font-head);
 }
 
-/* ================================
-   10. STATIC PAGES (PRIVACY/TERMS)
-================================== */
+/* 10. STATIC PAGES (PRIVACY/TERMS) */
 .static-page {
   background: var(--color-bg-soft);
   padding: 68px 0 80px 0;
@@ -512,9 +478,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   margin-bottom: 11px;
 }
 
-/* ================================
-   13. ANIMATIONS & KEYFRAMES
-================================== */
+/* 13. ANIMATIONS & KEYFRAMES */
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-48px);}
   to { opacity: 1; transform: none;}
@@ -555,9 +519,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   transform: none;
 }
 
-/* ================================
-   14. RESPONSIVE MEDIA QUERIES
-================================== */
+/* 14. RESPONSIVE MEDIA QUERIES */
 @media (max-width: 1100px) {
   .container { max-width: 98vw; }
 }
@@ -573,10 +535,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
   .grid-bg { background-size: 22px 22px; }
 }
 @media (max-width: 768px) {
-  /* Mobile navigation */
   .mobile-menu-toggle { display: flex; }
-  
-  /* Create unified mobile menu container */
   .mobile-menu-container {
     position: absolute;
     top: 100%;
@@ -588,9 +547,7 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
     z-index: 1000;
     border-radius: 0 0 8px 8px;
   }
-  
   .mobile-menu-container.mobile-menu-open { display: block; }
-  
   nav ul {
     position: static;
     background: transparent;
@@ -600,7 +557,6 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
     box-shadow: none;
     display: flex;
   }
-  
   nav ul li { width: 100%; }
   nav ul li a { 
     width: 100%; 
@@ -610,17 +566,14 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
     font-size: 1.05rem;
     transition: background 0.2s, padding-left 0.2s;
   }
-  
   nav ul li a:hover, nav ul li a.active {
     background: #FF6E40;
     padding-left: 32px;
   }
-  
   nav ul li:last-child a {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     margin-bottom: 8px;
   }
-  
   .nav-auth-box {
     position: static;
     background: transparent;
@@ -630,7 +583,6 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
     gap: 12px;
     justify-content: center;
   }
-  
   .nav-auth-box a { 
     margin: 0;
     flex: 1;
@@ -640,18 +592,13 @@ nav ul li a.active, nav ul li a:hover { background:#FF6E40; color:#fff; }
     padding: 12px 16px;
     border-radius: 6px;
   }
-  
-  /* Improve section spacing and layout */
   .hero { padding: 48px 0 40px 0; }
   .hero-main h1 { font-size: 2rem; line-height: 1.2; }
   .hero-subtext { font-size: 1.1rem; }
-  
   .quick-info-row { flex-direction: column; gap: 16px; }
   .quick-info-box { min-width: auto; width: 100%; }
-  
   .cards-row { flex-direction: column; gap: 24px; }
   .service-card, .feature-card { max-width: 100%; }
-  
   .testimonial-row { flex-direction: column; gap: 24px; }
   .testimonial-card { max-width: 100%; }
 }

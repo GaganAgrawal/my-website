@@ -124,11 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
       @keyframes ripple-effect {
         to { transform: scale(2.4); opacity: 0; }
       }
-    `;
-    document.head.appendChild(style);
-  }
-})();
-      }
       .btn { position: relative; overflow: hidden; }
     `;
     document.head.appendChild(style);

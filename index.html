@@ -16,22 +16,19 @@
       <a href="index.html" class="logo-link">
         <img src="images/logo.png" alt="Webloom Logo" class="logo-small">
       </a>
-      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
-      <div class="mobile-menu-container">
-        <nav>
-          <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="nav-auth-box">
-          <a href="login.html" class="login-btn">Sign In</a>
-          <a href="signup.html" class="signup-btn">Sign Up</a>
-        </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-auth-box">
+        <a href="login.html" class="login-btn">Sign In</a>
+        <a href="signup.html" class="signup-btn">Sign Up</a>
       </div>
     </div>
   </header>
@@ -164,39 +161,6 @@
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
-  <section class="about-cards-section fade-in-up">
-    <div class="container">
-      <h2 class="section-title">About Webloom</h2>
-      <div class="about-cards-grid-custom">
-        <div class="about-left">
-          <div class="about-card mission-card">
-            <h3>Our Mission</h3>
-            <p>To deliver outstanding ROI-driven solutions for our clients.</p>
-          </div>
-          <div class="about-card vision-card">
-            <h3>Our Vision</h3>
-            <p>To be recognized as the most trusted digital agency.</p>
-          </div>
-        </div>
-        <div class="about-right">
-          <div class="about-card about-company-card">
-            <h3>About Webloom</h3>
-            <p>We are a team of expert developers and marketers committed to your success.</p>
-          </div>
-          <div class="about-card values-card">
-            <h3>Our Values</h3>
-            <ul>
-              <li>Integrity</li>
-              <li>Innovation</li>
-              <li>Customer Focus</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- TESTIMONIALS -->
   <section class="testimonials-section fade-in-up">
     <div class="container">
@@ -250,8 +214,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- SCRIPTS -->
   <script>
     // Simple animation on scroll for fade-in sections
     const observer = new IntersectionObserver(entries => {
@@ -261,6 +223,5 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => observer.observe(el));
   </script>
-  <script src="script.js"></script>
 </body>
 </html>

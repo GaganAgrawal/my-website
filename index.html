@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webloom - Home</title>
-  <meta name="description" content="Webloom: Powerful digital solutions for your business. Web development, analytics, marketing and more.">
+  <title>Webloom – Empowering Business Growth</title>
+  <meta name="description" content="Webloom: Professional digital solutions for your business. Web development, analytics, marketing, and more.">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- HEADER -->
@@ -15,37 +16,38 @@
       <a href="index.html" class="logo-link">
         <img src="images/logo.png" alt="Webloom Logo" class="logo-small">
       </a>
-      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
-      <div class="mobile-menu-container">
-        <nav>
-          <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="nav-auth-box">
-          <a href="login.html" class="login-btn">Sign In</a>
-          <a href="signup.html" class="signup-btn">Sign Up</a>
-        </div>
+<button class="mobile-menu-toggle" aria-label="Toggle mobile menu">☰</button>
+<div class="mobile-menu-container">
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-auth-box">
+    <a href="login.html" class="login-btn">Sign In</a>
+    <a href="signup.html" class="signup-btn">Sign Up</a>
+  </div>
+</div>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero">
+  <section class="hero fade-in">
     <div class="container hero-content">
       <div class="hero-main">
         <h1>
-          <span class="accent">Modern Digital Solutions</span><br>
+          <span class="accent">Innovative Digital Solutions</span><br>
           For Your Business Growth
         </h1>
         <p class="hero-subtext">
-          We design, develop & market digital experiences that drive results.<br>
-          Partner with Webloom for reliable, creative, and future-focused growth.
+          We craft, launch & market digital experiences that deliver measurable results.<br>
+          Partner with Webloom for reliable, creative, and future-ready business elevation.
         </p>
         <div class="hero-cta-buttons">
           <a href="contact.html" class="btn btn-primary">Get Started</a>
@@ -53,6 +55,7 @@
         </div>
       </div>
       <div class="hero-img">
+        <div class="grid-bg"></div>
         <div class="hero-img-inner">
           <img src="images/banner.jpg" alt="Webloom Digital Solutions">
         </div>
@@ -60,52 +63,76 @@
     </div>
   </section>
 
-  <!-- QUICK INFO STRIP -->
-  <section class="quick-info-strip">
-    <div class="container quick-info-row">
-      <div class="quick-info-box">
-  <span class="quick-info-icon">🧑‍💻</span>
-  <div>
-    <div class="quick-info-title">Expert Developers</div>
-    <div class="quick-info-desc">Skilled & Certified Team</div>
-  </div>
-</div>
-      <div class="quick-info-box">
-        <span class="quick-info-icon">🚀</span>
-        <div>
-          <div class="quick-info-title">Result Driven</div>
-          <div class="quick-info-desc">ROI-focused solutions</div>
+  <!-- ANIMATED INFO STRIP -->
+  <section class="animated-info-strip">
+    <div class="info-strip-viewport">
+      <div class="info-strip-track">
+        <div class="info-card">
+          <span class="info-icon"><img src="images/expert.svg" alt="Expert Developers"></span>
+          <div>
+            <div class="info-title">Expert Developers</div>
+            <div class="info-desc">Skilled &amp; Certified Team</div>
+          </div>
         </div>
-      </div>
-      <div class="quick-info-box">
-        <span class="quick-info-icon">⚡</span>
-        <div>
-          <div class="quick-info-title">Fast Support</div>
-          <div class="quick-info-desc">Real people, real answers</div>
+        <div class="info-card">
+          <span class="info-icon"><img src="images/rocket.svg" alt="Result Driven"></span>
+          <div>
+            <div class="info-title">Result Driven</div>
+            <div class="info-desc">ROI-focused solutions</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon"><img src="images/bolt.svg" alt="Fast Support"></span>
+          <div>
+            <div class="info-title">Fast Support</div>
+            <div class="info-desc">Real people, real answers</div>
+          </div>
+        </div>
+        <!-- Repeat for seamless loop -->
+        <div class="info-card">
+          <span class="info-icon"><img src="images/expert.svg" alt="Expert Developers"></span>
+          <div>
+            <div class="info-title">Expert Developers</div>
+            <div class="info-desc">Skilled &amp; Certified Team</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon"><img src="images/rocket.svg" alt="Result Driven"></span>
+          <div>
+            <div class="info-title">Result Driven</div>
+            <div class="info-desc">ROI-focused solutions</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon"><img src="images/bolt.svg" alt="Fast Support"></span>
+          <div>
+            <div class="info-title">Fast Support</div>
+            <div class="info-desc">Real people, real answers</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES PREVIEW -->
-  <section class="services-section">
+  <section class="services-section fade-in-up">
     <div class="container">
       <h2 class="section-title">Our Core Services</h2>
       <div class="cards-row">
         <div class="service-card">
           <div class="icon-box">💻</div>
           <h3>Web Development</h3>
-          <p>Modern, responsive websites that reflect your brand and drive results.</p>
+          <p>Modern, responsive websites that enhance your brand and grow your business.</p>
         </div>
         <div class="service-card">
           <div class="icon-box">📊</div>
           <h3>Data Analytics</h3>
-          <p>Insightful analytics to help you make smarter business decisions.</p>
+          <p>Actionable insights and metrics to drive smart business decisions.</p>
         </div>
         <div class="service-card">
           <div class="icon-box">📈</div>
           <h3>Digital Marketing</h3>
-          <p>SEO, PPC, and social media campaigns to grow your digital presence.</p>
+          <p>SEO, PPC, and social campaigns to build your digital presence and ROI.</p>
         </div>
       </div>
       <div class="centered">
@@ -115,31 +142,31 @@
   </section>
 
   <!-- FEATURES -->
-  <section class="features-section">
+  <section class="features-section fade-in-up">
     <div class="container">
       <h2 class="section-title">Why Choose Webloom?</h2>
       <div class="cards-row">
         <div class="feature-card">
           <div class="icon-box">⚡</div>
-          <h3>Fast, Optimized</h3>
-          <p>Lightning-fast performance, so your users never wait.</p>
+          <h3>Lightning Fast</h3>
+          <p>Seamless performance for all your users, everywhere.</p>
         </div>
         <div class="feature-card">
           <div class="icon-box">🔒</div>
-          <h3>Secure</h3>
-          <p>Best-in-class security practices to keep your data safe.</p>
+          <h3>Fully Secure</h3>
+          <p>Advanced security to safeguard your business and user data.</p>
         </div>
         <div class="feature-card">
           <div class="icon-box">🎨</div>
           <h3>Modern Design</h3>
-          <p>Attractive, clean designs that stand out from competitors.</p>
+          <p>Elegant, conversion-focused design that stands out.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
+  <section class="testimonials-section fade-in-up">
     <div class="container">
       <h2 class="section-title">What Our Clients Say</h2>
       <div class="testimonial-row">
@@ -162,14 +189,14 @@
   <!-- FOOTER -->
   <footer class="footer-main">
     <div class="container footer-flex">
-      <div class="footer-col">
+      <div class="footer-col company-footer">
         <img src="images/logo.png" alt="Webloom Logo" class="footer-logo">
-        <p>Webloom &copy; 2025<br>Empowering your business with creative digital solutions for lasting growth.</p>
-        <div class="footer-social">
-         
+        <div class="footer-brand">
+          <span class="footer-company">Webloom &copy; 2025</span>
+          <span class="footer-tagline">Empowering your business with creative digital solutions.</span>
         </div>
       </div>
-      <div class="footer-col">
+      <div class="footer-col links-footer">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="about.html">About</a></li>
@@ -177,18 +204,28 @@
           <li><a href="features.html">Features</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="terms.html">Terms</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html" class="footer-link-animated">Terms</a></li>
+          <li><a href="privacy.html" class="footer-link-animated">Privacy</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer-col contact-footer">
         <h4>Contact</h4>
-        <p>Email: <a href="mailto:gaganagrawal008@gmail.com">gaganagrawal008@gmail.com</a></p>
-        <p>Phone: <a href="tel:8077472073">8077472073</a></p>
-        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+        <ul>
+          <li>Email: <a href="mailto:gaganagrawal008@gmail.com">gaganagrawal008@gmail.com</a></li>
+          <li>Phone: <a href="tel:8077472073">8077472073</a></li>
+          <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+        </ul>
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script>
+    // Simple animation on scroll for fade-in sections
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('appear');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in, .fade-in-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
